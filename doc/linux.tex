@@ -2,17 +2,17 @@
 \input{../style/cours-style.sty}
 
 % Title
-\title[LINUX2]{Linux - Avancé pour Administrateur/PowerUser - LINUX2}
+\title[Linux]{Linux - Dev Fullstack M2}
 \author{Christophe Brun}
-\institute{Digicomp}
+\institute{My Digital School}
 \date{17 avril 2024}
 \beamertemplatenavigationsymbolsempty
 
 \titlegraphic{
     \bigbreak
-    \includegraphics[width=5cm]{image/digicomp-logo}
+    \includegraphics[width=5cm]{image/mds-logo}
     \bigbreak
-    Digital competence. Made of People.
+    L’école des métiers du digital
     \bigbreak
 }
 
@@ -22,7 +22,7 @@
         \titlepage
         \bigbreak
         \centering
-        \url{https://github.com/DigicompClassesByPapIT/linux2}
+        \url{https://github.com/My-Digital-School-by-PapIT/Linux}
     \end{frame}
 
 
@@ -30,7 +30,7 @@
 
     \begin{frame}{Table des matières}
         \begin{tiny}
-            \begin{multicols}{2}
+            \begin{multicols}{3}
                 \tableofcontents
             \end{multicols}
         \end{tiny}
@@ -152,19 +152,21 @@
     \subsection{Kernel et distribution}\label{subsec:kernel-et-distribution}
 
     \begin{frame}{Les distributions}{Définitions\footnote{Glossary, \url{https://help.ubuntu.com/community/Glossary}}}
-        \begin{itemize}
-            \item \textbf{Kernel} ou \textbf{Noyau}~: Le composant central d'un système d'exploitation qui contrôle tous les processus bas niveau d'un ordinateur, tels que la gestion de la mémoire, les threads et les entrées/sorties.
-            En un sens, le noyau agit comme le gardien de l'ordinateur vis-à-vis du matériel.
-            Les applications font des appels système via le noyau pour demander des ressources et interagir avec le matériel.
-            \item \textbf{Distribution}~: Désigne une version de GNU/Linux ou d'un autre système d'exploitation open source, bien que certaines personnes soutiennent que le terme devrait inclure les différents systèmes d'exploitation Windows® et Apple.
-            Ubuntu est la version la plus populaire, mais il en existe de nombreuses autres, telles que RedHat, qui est bien connue pour les serveurs.
-            La plupart des autres distributions sont conçues pour un type particulier d'architecture, comme les téléphones, les netbooks, les routeurs, les serveurs, \textit{etc}.
-        \end{itemize}
+        \begin{small}
+            \begin{itemize}
+                \item \textbf{Kernel} ou \textbf{Noyau}~: Le composant central d'un système d'exploitation qui contrôle tous les processus bas niveau d'un ordinateur, tels que la gestion de la mémoire, les threads et les entrées/sorties.
+                En un sens, le noyau agit comme le gardien de l'ordinateur vis-à-vis du matériel.
+                Les applications font des appels système via le noyau pour demander des ressources et interagir avec le matériel.
+                \item \textbf{Distribution}~: Désigne une version de GNU/Linux ou d'un autre système d'exploitation open source, bien que certaines personnes soutiennent que le terme devrait inclure les différents systèmes d'exploitation Windows® et Apple.
+                Ubuntu est la version la plus populaire, mais il en existe de nombreuses autres, telles que RedHat, qui est bien connue pour les serveurs.
+                La plupart des autres distributions sont conçues pour un type particulier d'architecture, comme les téléphones, les netbooks, les routeurs, les serveurs, \textit{etc}.
+            \end{itemize}
+        \end{small}
     \end{frame}
 
     \begin{frame}{Kernel}{Définition\footnote{Linux fundamentals: user space, kernel space, and the syscalls API surface, \url{https://www.form3.tech/blog/engineering/linux-fundamentals-user-kernel-space}}}
         \centering
-        \includegraphics[width=10cm]{image/kernel}
+        \includegraphics[width=9cm]{image/kernel}
         \flushleft
         \begin{itemize}
             \item \textbf{User space}~: L'espace utilisateur est l'endroit où les applications s'exécutent.
@@ -368,7 +370,7 @@ root@71641013d445:/usr/src/celia# ls
             Qu'en penser~?
             \column{0.3\textwidth}
             \centering
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{columns}
     \end{frame}
 
@@ -410,7 +412,7 @@ $ useradd -h | grep shell
         \bigbreak
         Un exemple de commande devient donc~:
         \begin{lstlisting}[language=bash]
-$ useradd -s /bin/bash -m -d /home/digiformateur digicomp
+$ useradd -s /bin/bash -m -d /home/digiformateur mds
         \end{lstlisting}
         \bigbreak
         \lstinline{/bin/bash} passé à l'option \lstinline{-s} permet de spécifier le Shell.
@@ -528,7 +530,7 @@ $ echo "alias ll='ls -l'" >> ~/.bashrc
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}{Shell}{Sécurisation du SSH avec la cryptographie asymétrique}
@@ -581,7 +583,7 @@ $ touch ~/.ssh/authorized_keys
 $ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQ8z4... chrichri@localhost" >> ~/.ssh/authorized_keys
         \end{lstlisting}
         \begin{center}
-            \includegraphics[width=2cm]{image/digicomp-lightbulb} \\ Expliquer chaque commande \\
+            \includegraphics[width=2cm]{image/bulb} \\ Expliquer chaque commande \\
         \end{center}
     \end{frame}
 
@@ -664,7 +666,7 @@ Usage: busybox [function [arguments]...]
         BusyBox is a multi-call binary that combines many common Unix
         utilities into a single executable.  The shell in this build
         is configured to run built-in utilities without $PATH search.
-        You don't need to install a link to busybox for each utility.
+        You don t need to install a link to busybox for each utility.
         To run external program, use full path (/sbin/ip instead of ip).
 
 Currently defined functions:
@@ -777,7 +779,7 @@ c148c36111463e962f490742af787c1f8e49776f09d89e19f71c6cdcf220240d  employee.csv
         Logger un message d'erreur si \lstinline{ls klazkjhfzklefjh} \textbf{n'a pas fonctionné}.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}{Commandes de base}{Exercice \execcounterdispinc{}~:}
@@ -830,9 +832,9 @@ c148c36111463e962f490742af787c1f8e49776f09d89e19f71c6cdcf220240d  employee.csv
         \begin{columns}
             \centering
             \column{0.2\textwidth}
-            \includegraphics[width=3cm]{image/digicomp-video}
+            \includegraphics[width=2cm]{image/video}
             \column{0.8\textwidth}
-            \includegraphics[width=9cm]{image/kernighan-piping-video} \\ \url{https://www.youtube.com/watch?v=bKzonnwoR2I} \\
+            \includegraphics[width=8cm]{image/kernighan-piping-video} \\ \url{https://www.youtube.com/watch?v=bKzonnwoR2I} \\
         \end{columns}
     \end{frame}
 
@@ -1021,9 +1023,9 @@ $ join -1 1 -2 1 -t ';' -a 1 <(sed 1d employee.csv | sort -k 1 --field-separator
         \begin{columns}
             \centering
             \column{0.2\textwidth}
-            \includegraphics[width=3cm]{image/digicomp-video}
+            \includegraphics[width=2cm]{image/video}
             \column{0.8\textwidth}
-            \includegraphics[width=9cm]{image/coffee-with-bk} \\ \url{https://www.youtube.com/watch?v=GNyQxXw_oMQ} \\
+            \includegraphics[width=8cm]{image/coffee-with-bk} \\ \url{https://www.youtube.com/watch?v=GNyQxXw_oMQ} \\
         \end{columns}
     \end{frame}
 
@@ -1067,8 +1069,8 @@ $ join -1 1 -2 1 -t ';' -a 1 <(sed 1d employee.csv | sort -k 1 --field-separator
             Ces commandes ne remplacent pas SQL, car elles s'interfacent difficilement avec ces programmes haut-niveau.
             \bigbreak
             Par contre, elles peuvent traiter des flux de données avant de les mettre en base.
-            L'exercice consiste à développer avec ces commandes l'équivalent des \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/sqlite-hr.sh}{traitements SQL de ce fichier}.
-            Avec les données des fichiers \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/employee.csv}{\lstinline{employee.csv}} et \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/dept.csv}{\lstinline{dept.csv}}.
+            L'exercice consiste à développer avec ces commandes l'équivalent des \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/sqlite-hr.sh}{traitements SQL de ce fichier}.
+            Avec les données des fichiers \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/employee.csv}{\lstinline{employee.csv}} et \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/dept.csv}{\lstinline{dept.csv}}.
 
             Analyser~:
             \begin{itemize}
@@ -1080,16 +1082,16 @@ $ join -1 1 -2 1 -t ';' -a 1 <(sed 1d employee.csv | sort -k 1 --field-separator
     \end{frame}
 
     \begin{frame}{Commandes de traitement de données}{Solution}
-        Plusieurs solutions possibles sont dans le script Shell \url{https://github.com/DigicompClassesByPapIT/linux2/blob/main/join-using-awk.sh}.
+        Plusieurs solutions possibles sont dans le script Shell \url{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/join-using-awk.sh}.
         \bigbreak
-        Elles sont équivalentes au SQL qui est dans le script \url{https://github.com/DigicompClassesByPapIT/linux2/blob/main/sqlite-hr.sh}.
+        Elles sont équivalentes au SQL qui est dans le script \url{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/sqlite-hr.sh}.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/digicomp-lightbulb}
+        \includegraphics[width=3cm]{image/bulb}
     \end{frame}
 
     \begin{frame}{Commandes de traitement de données}{Exercice \execcounterdispinc{}~:}
-        De la même manière, préparer les fichiers suivants \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/receveur.csv}{\lstinline{receveur.csv}} et \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/porteur.csv}{\lstinline{porteur.csv}} pour qu'ils soient \textit{loadés} en la base SQL par le script \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/sqlite-load-bank.sh}{\lstinline{sqlite-load-bank.sh}}.
+        De la même manière, préparer les fichiers suivants \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/receveur.csv}{\lstinline{receveur.csv}} et \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/porteur.csv}{\lstinline{porteur.csv}} pour qu'ils soient \textit{loadés} en la base SQL par le script \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/sqlite-load-bank.sh}{\lstinline{sqlite-load-bank.sh}}.
         \bigbreak
         Ces fichiers sont des flux de cartes bancaires.
         Un fichier du porteur de carte l'autre du commerçant aussi appelé receveur (de carte).
@@ -1194,7 +1196,7 @@ lentgh of the struct: 35
         \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
 $ whoami
 chrichri
-$ addgroup digicomp
+$ addgroup mds
 fatal: Seul le superutilisateur est autorisé à ajouter un utilisateur ou un groupe au système.
         \end{lstlisting}
         Pourquoi cela ne fonctionne pas~?
@@ -1205,14 +1207,14 @@ fatal: Seul le superutilisateur est autorisé à ajouter un utilisateur ou un gr
             Donc être \textquote{root}, ou utiliser \lstinline{sudo}, si on est \textquote{sudoer}, \textit{i.e.}, que l'on fait partie du groupe \textquote{sudo}.
         \end{dangercolorbox}
         \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
-$ sudo addgroup digicomp
-info: Choix d'un GID dans la plage 1000 à 59999 ...
-info: Ajout du groupe « digicomp » (GID 1002)...
+$ sudo addgroup mds
+info: Choix d un GID dans la plage 1000 à 59999 ...
+info: Ajout du groupe « mds » (GID 1002)...
 $ groups
 chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse lxd sambashare docker libvirt nordvpn
 $ members sudo
 chrichri
-$ members digicomp
+$ members mds
         \end{lstlisting}
     \end{frame}
 
@@ -1223,7 +1225,7 @@ $ groups chrichri
 chrichri~: chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse lxd sambashare nordvpn docker libvirt
         \end{lstlisting}
         \lstinline{members} permet de lister les membres d'un groupe.
-        Il nous confirme que le groupe \lstinline{digicomp} est bien créé.
+        Il nous confirme que le groupe \lstinline{mds} est bien créé.
         Il n'a pas de membre.
         \bigbreak
         Tous les groupes sont dans \lstinline{/etc/group}.
@@ -1231,39 +1233,39 @@ chrichri~: chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse
 
     \begin{frame}[fragile]{Utilisateurs, groupes et droits d'accès}{Les groupes}
         \lstinline{groups} permet de lister les groupes auxquels appartient un utilisateur, à défaut d'utilisateur, ceux de celui qui lance la commande~:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
 $ groups chrichri
 chrichri~: chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse lxd sambashare nordvpn docker libvirt
         \end{lstlisting}
         Pour qu'une ressource, fichier, dossier, appartienne à un groupe, il faut que le groupe soit propriétaire de la ressource.
         Pour cela, la commande \lstinline{chown} (CHange OWNer) permet de changer le propriétaire d'une ressource.
 % Shell listing
-        \begin{lstlisting}[language=bash]
-$ mkdir digicomp-little-secret
-$ touch digicomp-little-secret/secret.txt
-$ echo "Le code de l'entrée est 8564" > digicomp-little-secret/secret.txt
-$ cat digicomp-little-secret/secret.txt
-Le code de l'entrée est 8564
-$ sudo chown root:digicomp -R digicomp-little-secret/
-$ ls -lha digicomp-little-secret/
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
+$ mkdir mds-little-secret
+$ touch mds-little-secret/secret.txt
+$ echo "Le code de l entrée est 8564" > mds-little-secret/secret.txt
+$ cat mds-little-secret/secret.txt
+Le code de l entrée est 8564
+$ sudo chown root:mds -R mds-little-secret/
+$ ls -lha mds-little-secret/
 total 12K
-drwxrwxr-x  2 root     digicomp 4,0K août  15 16:07 .
+drwxrwxr-x  2 root     mds      4,0K août  15 16:07 .
 drwxrwxr-x 10 chrichri chrichri 4,0K août  15 16:07 ..
--rw-rw-r--  1 root     digicomp   29 août  15 16:08 secret.txt
+-rw-rw-r--  1 root     mds        29 août  15 16:08 secret.txt
         \end{lstlisting}
     \end{frame}
 
     \begin{frame}[fragile]{Utilisateurs, groupes et droits d'accès}{Les groupes}
-        \lstinline{sudo chown root:digicomp -R digicomp-little-secret} veut dire que le groupe propriétaire de \lstinline{digicomp-little-secret} est \lstinline{digicomp} et de manière récursive, \textit{i.e.}, pour les sous-dossiers et fichiers.
+        \lstinline{sudo chown root:mds -R mds-little-secret} veut dire que le groupe propriétaire de \lstinline{mds-little-secret} est \lstinline{mds} et de manière récursive, \textit{i.e.}, pour les sous-dossiers et fichiers.
         La structure de la commande est \lstinline{chown <user>:<group> -R <path>}.
         Et il faut là aussi être \textquote{superutilisateur}, ici avec \lstinline{sudo}.
         \bigbreak
         Mais\ldots
         \begin{lstlisting}[language=bash]
-$ cat digicomp-little-secret/secret.txt
-Le code de l'entrée est 8564
-$ echo "Le code de l'entré est 2539" > digicomp-little-secret/secret.txt
-bash: digicomp-little-secret/secret.txt: Permission non accordée
+$ cat mds-little-secret/secret.txt
+Le code de l entrée est 8564
+$ echo "Le code de l'entré est 2539" > mds-little-secret/secret.txt
+bash: mds-little-secret/secret.txt: Permission non accordée
         \end{lstlisting}
         Qu'est-ce que cela veut dire~?
         \begin{center}
@@ -1279,18 +1281,18 @@ bash: digicomp-little-secret/secret.txt: Permission non accordée
             Par défaut ces droits sont en lecture seule, n'ont n'avons pas pu écrire dans le fichier.
         \end{dangercolorbox}
         \centering
-        \includegraphics[width=7cm]{image/permission-classes}
+        \includegraphics[width=6cm]{image/permission-classes}
         \flushleft
         Les droits par défaut du fichier en question étaient \lstinline{-rw-rw-r--}.
     \end{frame}
 
     \begin{frame}[fragile]{Utilisateurs, groupes et droits d'accès}{Les droits\cref{rights-digitalocean}}
         \begin{lstlisting}[language=bash]
-$ ls -lha digicomp-little-secret/
+$ ls -lha mds-little-secret/
 total 12K
-drwxrwxr-x  2 root     digicomp 4,0K août  15 16:07 .
+drwxrwxr-x  2 root     mds      4,0K août  15 16:07 .
 drwxrwxr-x 10 chrichri chrichri 4,0K août  15 16:07 ..
--rw-rw-r--  1 root     digicomp   29 août  15 16:08 secret.txt
+-rw-rw-r--  1 root     mds        29 août  15 16:08 secret.txt
         \end{lstlisting}
         \begin{columns}
             \column{0.4\textwidth}
@@ -1361,19 +1363,19 @@ Out[45]: '777'
     \begin{frame}[fragile]{Utilisateurs, groupes et droits d'accès}{Notation octale\cref{octal}}
         En résumé, restreindre les droits à la lecture par l'utilisateur propriétaire m'empêche de lire le fichier~:
         \begin{lstlisting}[language=bash]
-$ sudo chmod 400 digicomp-little-secret/secret.txt
-$ cat digicomp-little-secret/secret.txt
-cat: digicomp-little-secret/secret.txt: Permission non accordée
+$ sudo chmod 400 mds-little-secret/secret.txt
+$ cat mds-little-secret/secret.txt
+cat: mds-little-secret/secret.txt: Permission non accordée
         \end{lstlisting}
         Graĉe à \lstinline{sudo} je peux me donner les droits en lecture ou écriture par exemple~:
         \begin{lstlisting}[language=bash]
-$ sudo chmod 007 digicomp-little-secret/secret.txt
-$ cat digicomp-little-secret/secret.txt
-Le code de l'entrée est 8564
-$ sudo chmod 002 digicomp-little-secret/secret.txt
-$ cat digicomp-little-secret/secret.txt
-cat: digicomp-little-secret/secret.txt: Permission non accordée
-$ echo "Le code de l'entrée est 8564" > digicomp-little-secret/secret.txt
+$ sudo chmod 007 mds-little-secret/secret.txt
+$ cat mds-little-secret/secret.txt
+Le code de l entrée est 8564
+$ sudo chmod 002 mds-little-secret/secret.txt
+$ cat mds-little-secret/secret.txt
+cat: mds-little-secret/secret.txt: Permission non accordée
+$ echo "Le code de l entrée est 8564" > mds-little-secret/secret.txt
         \end{lstlisting}
     \end{frame}
 
@@ -1408,7 +1410,7 @@ useradd: Permission denied.
 useradd~: impossible de vérouiller /etc/passwd ; réessayer plus tard.
 $ sudo useradd -s /bin/bash -m -d /home/digiformateur digiformateur # sudo
 $ passwd digiformateur
-passwd~: Vous ne devriez pas voir ou modifier l'information du mot de passe pour digiformateur.
+passwd~: Vous ne devriez pas voir ou modifier l information du mot de passe pour digiformateur.
 $ sudo passwd digiformateur # superutilisateur
 Nouveau mot de passe~: 
 Retapez le nouveau mot de passe~: 
@@ -1487,18 +1489,18 @@ usermod -a -G <group> <user name>
         Cet exercice a pour objectif de créer un simple site web static isolé par le jeu des user/groupes/droits.
         \begin{itemize}
             \item Créer un groupe pour ce serveur/site web.
-            \item Créer un user type développeur qui aura des droits adéquats sur un dossier et fichier \lstinline{/var/www/html/digicomp/index.html}.
-            \item Créer un user type production qui aura des droits adéquats sur un dossier et fichier \lstinline{/var/www/html/digicomp/index.html}.
-            \item Un script Shell à exécuter grâce au shebang \lstinline{\#!/bin/bash} qui lance la commande Python \lstinline{python3 -m http.server -d /var/www/html/digicomp/}.
+            \item Créer un user type développeur qui aura des droits adéquats sur un dossier et fichier \lstinline{/var/www/html/mds/index.html}.
+            \item Créer un user type production qui aura des droits adéquats sur un dossier et fichier \lstinline{/var/www/html/mds/index.html}.
+            \item Un script Shell à exécuter grâce au shebang \lstinline{\#!/bin/bash} qui lance la commande Python \lstinline{python3 -m http.server -d /var/www/html/mds/}.
             Ce script Shell ne peut être exécuté par l'utilisateur de production uniquement et aucune resource ne doit pouvoir être modifiée.
         \end{itemize}
     \end{frame}
 
     \begin{frame}{Utilisateurs, groupes et droits d'accès}{Solution}
-        Une des solutions possibles est dans le script \url{https://github.com/DigicompClassesByPapIT/linux2/blob/main/python-server-rights.sh}.
+        Une des solutions possibles est dans le script \url{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/python-server-rights.sh}.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/digicomp-lightbulb}
+        \includegraphics[width=3cm]{image/bulb}
     \end{frame}
 
 
@@ -1726,7 +1728,7 @@ $ sudo rm -rf /mnt/sda-usb
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \subsection{La table du système de fichiers (/etc/fstab)}\label{subsec:fstab}
@@ -1755,25 +1757,27 @@ tmpfs /tmp tmpfs defaults,size=2G 0 0
     \end{frame}
 
     \begin{frame}[fragile]{Système de fichiers}{La table du système de fichiers (\lstinline{/etc/fstab})}
-        On y trouve les UUID des disques, le point de montage, le type de système de fichier, les options de montage du disque principale~:
-        \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+        \begin{small}
+            On y trouve les UUID des disques, le point de montage, le type de système de fichier, les options de montage du disque principale~:
+            \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 UUID=9bcc82ee-9214-4eac-90f6-9695c585874b /               ext4    errors=remount-ro 0       1
-        \end{lstlisting}
-        La partition de boot montée sur \lstinline{/boot/efi}~:
-        \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+            \end{lstlisting}
+            La partition de boot montée sur \lstinline{/boot/efi}~:
+            \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 UUID=EE30-267D  /boot/efi       vfat    umask=0077      0       1
-        \end{lstlisting}
-        La \lstinline{swapfile} qui est commentée pour car c'est une extension de la RAM sur le disque, cette configuration invite l'OS à utiliser un maximum la RAM~.
-        La partition \lstinline{/tmp} montée en mémoire pour de meilleures performances avec certaines commandes comme \lstinline{sort}, la mémoire est plus rapide que le SSD.~:
-        \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+            \end{lstlisting}
+            La \lstinline{swapfile} qui est commentée pour car c'est une extension de la RAM sur le disque, cette configuration invite l'OS à utiliser un maximum la RAM~.
+            La partition \lstinline{/tmp} montée en mémoire pour de meilleures performances avec certaines commandes comme \lstinline{sort}, la mémoire est plus rapide que le SSD.~:
+            \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 # Temp file in memory.
 tmpfs /tmp tmpfs defaults,size=2G 0 0
-        \end{lstlisting}
-        On peut aussi utiliser le fichier \textit{device} de la partition pour configurer le montage au moment du démarrage d'un disque supplémentaire, \textit{e.g.}, la clé USB sur un point de montage~:
-        \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+            \end{lstlisting}
+            On peut aussi utiliser le fichier \textit{device} de la partition pour configurer le montage au moment du démarrage d'un disque supplémentaire, \textit{e.g.}, la clé USB sur un point de montage~:
+            \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 # /boot was on /dev/sda5 during installation
 /dev/sda5                                    /boot           ext2    defaults          0       2
-        \end{lstlisting}
+            \end{lstlisting}
+        \end{small}
     \end{frame}
 
     \begin{frame}{Système de fichiers}{Exercices de configuration de la table du système de fichiers (\lstinline{/etc/fstab})}
@@ -1782,7 +1786,7 @@ tmpfs /tmp tmpfs defaults,size=2G 0 0
         Exercice \execcounterdispinc: Créer un disque virtuel de 1 Go et le monter automatiquement au démarrage en configurant \lstinline{/etc/fstab}.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \subsection{RAID}\label{subsec:raid}
@@ -1830,7 +1834,7 @@ tmpfs /tmp tmpfs defaults,size=2G 0 0
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}{RAID}{Exercice \execcounterdispinc{}}
@@ -1874,19 +1878,21 @@ tmpfs /tmp tmpfs defaults,size=2G 0 0
     \end{frame}
 
     \begin{frame}{Logical Volume Manager, A.K.A LVM}{LVM over RAID\cref{lvm}}
-        Si les données sont strippées (avec les options \lstinline{-I} et/ou \lstinline{-i} de \lstinline{lvm2}\footnote{Analysing a Standard Logical Volume, \url{https://www.theurbanpenguin.com/striped-lvm-volumes/}}) le risque de perte de données est plus grand sans RAID mais la performance est meilleure comme avec RAID 0.
-        \bigbreak
-        \begin{columns}
-            \column{0.5\textwidth}
-            L'idéal en termes de sécurité et de performance est d'avoir un RAID 1 pour les PV et les volumes logiques strippées.
+        \begin{small}
+            Si les données sont strippées (avec les options \lstinline{-I} et/ou \lstinline{-i} de \lstinline{lvm2}\footnote{Analysing a Standard Logical Volume, \url{https://www.theurbanpenguin.com/striped-lvm-volumes/}}) le risque de perte de données est plus grand sans RAID mais la performance est meilleure comme avec RAID 0.
             \bigbreak
-            Par défaut, avec la commande \lstinline{mount}, le montage configuré sera perdu au redémarrage.
-            Une configuration de \lstinline{/etc/fstab} permet de garder le montage du LV après redémarrage.
-            \column{0.5\textwidth}
-            \bigbreak
-            \centering
-            \includegraphics[width=7cm]{image/fs-stack.drawio}
-        \end{columns}
+            \begin{columns}
+                \column{0.5\textwidth}
+                L'idéal en termes de sécurité et de performance est d'avoir un RAID 1 pour les PV et les volumes logiques strippées.
+                \bigbreak
+                Par défaut, avec la commande \lstinline{mount}, le montage configuré sera perdu au redémarrage.
+                Une configuration de \lstinline{/etc/fstab} permet de garder le montage du LV après redémarrage.
+                \column{0.5\textwidth}
+                \bigbreak
+                \centering
+                \includegraphics[width=7cm]{image/fs-stack.drawio}
+            \end{columns}
+        \end{small}
     \end{frame}
 
     \begin{frame}{Système de fichier}{Exercice \execcounterdispinc}
@@ -2220,20 +2226,20 @@ $ pkill -9 <nom>
             Personnaliser \lstinline{top} pour que l'interface affiche les processus non pas en pourcentage totale de CPU consommé (par défaut) mais en pourcentage par cœur.
         \end{small}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
     \begin{frame}{Système de fichier}{Exercices \execcounterdispinc{}}
         \begin{itemize}
-            \item Lancer en arrière plan le script Shell \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/endless-loop.sh}{\lstinline{endless-loop.sh}}.
+            \item Lancer en arrière plan le script Shell \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/endless-loop.sh}{\lstinline{endless-loop.sh}}.
             \item Arrêter le processus correspondant au script dans \lstinline{top}.
-            \item Lancer à nouveau en arrière plan le script Shell \href{https://github.com/DigicompClassesByPapIT/linux2/blob/main/endless-loop.sh}{\lstinline{endless-loop.sh}}.
+            \item Lancer à nouveau en arrière plan le script Shell \href{https://github.com/My-Digital-School-by-PapIT/Linux/blob/main/endless-loop.sh}{\lstinline{endless-loop.sh}}.
             \item Arrêter le processus correspondant au script à l'aide de  \lstinline{ps} et \lstinline{kill}.
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}{Système de fichier}{Exercices sur les processus}
@@ -2406,7 +2412,7 @@ $ qemu-system-x86_64 -m 2G -smp 1 -nic user,hostfwd=tcp::5022-:22,hostfwd=tcp::5
         Le service de la machine hôte~:
         \begin{lstlisting}
 [Unit]
-Description=Qemu Ubuntu VM for Digicomp classes
+Description=Qemu Ubuntu VM for MDS classes
 After=network.target
 StartLimitIntervalSec=0
 
@@ -2431,7 +2437,7 @@ WantedBy=multi-user.target
         Le service dans la VM~:
         \begin{lstlisting}
 [Unit]
-Description=Digicomp Hello World
+Description=MDS Hello World
 After=network.target
 StartLimitIntervalSec=0
 
@@ -2539,7 +2545,7 @@ WantedBy=multi-user.target
         Crontab doit lancer un script Shell, pas de \textquote{one-liner} trop compliqué.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}[fragile]{Crontab}{Solution possible}
@@ -2650,7 +2656,7 @@ $ journalctl -u atd
 
     \begin{frame}{Installation de logiciels}{Snap vs APT\footnote{Snap vs APT: What's the Difference?, \url{https://phoenixnap.com/kb/snap-vs-apt}}}
         Comparaison des deux package managers d'Ubuntu, l'historique APT et le nouveau Snap~:
-        \begin{small}
+        \begin{footnotesize}
             \begin{table}[h!]
                 \centering
                 \begin{tabular}{|c|c|c|}
@@ -2681,7 +2687,7 @@ $ journalctl -u atd
                     \hline
                 \end{tabular}
             \end{table}
-        \end{small}
+        \end{footnotesize}
     \end{frame}
 
     \begin{frame}{Installation de logiciels}{Snap}
@@ -2919,7 +2925,7 @@ $ add-apt-repository --remove ppa:<nom_du_dépôt>
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \begin{frame}{Installation de logiciels}{Installation de paquets source}
@@ -2958,7 +2964,7 @@ $ add-apt-repository --remove ppa:<nom_du_dépôt>
         \end{itemize}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
 
@@ -3222,7 +3228,7 @@ $ ssh chrichri@192.168.122.1 -p 5022 -v -i /home/chrichri/vms/virt-ubuntu
             \end{itemize}
         \end{footnotesize}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -3247,7 +3253,7 @@ $ ssh chrichri@192.168.122.1 -p 5022 -v -i /home/chrichri/vms/virt-ubuntu
         Exercice \execcounterdispinc{}~:
         Installer Fail2ban sur la VM de l'exercice précédent et le configurer pour bannir une IP 20 minutes après 5 tentatives de connexion SSH infructueuses.
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -3317,7 +3323,7 @@ $ sudo apt install bind9
         \bigbreak
         Pour un A records, \textit{i.e.}, une simple association d'une IP à un nom~:
         \begin{lstlisting}
-$ chris-digicomp.local IN    A      <mon IP>
+$ chris-mds.local IN    A      <mon IP>
         \end{lstlisting}
         \bigbreak
     \end{frame}
@@ -3359,7 +3365,7 @@ $ chris-digicomp.local IN    A      <mon IP>
             \item Tester la résolution de noms de domaine.
         \end{itemize}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -3400,28 +3406,30 @@ $ chris-digicomp.local IN    A      <mon IP>
         Vérifier avec la commande \lstinline{traceroute} que les packets à destination du web passent bien par le serveur de routage.
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+        \includegraphics[width=3cm]{image/desktop}
     \end{frame}
 
     \subsection{OpenSSH}\label{subsec:openssh2}
 
     \begin{frame}{OpenSSH}{Définition\footnote{\label{openssh-site}OpenSSH, Keeping your comuniqués secret, \url{https://www.openssh.com/}}}
-        OpenSSH est l'outil de connectivité principal pour les connexions à distance avec le protocole SSH~.
-        Il a pour but de remplacer les outils non sécurisés tels que \lstinline{rlogin}, \lstinline{rsh} et \lstinline{telnet}.
-        Il chiffre tout le trafic pour éliminer les écoutes clandestines, le détournement de connexion et d'autres attaques.
-        De plus, OpenSSH offre une large gamme de capacités de tunneling sécurisé, plusieurs méthodes d'authentification et des options de configuration sophistiquées.
+        \begin{small}
+            OpenSSH est l'outil de connectivité principal pour les connexions à distance avec le protocole SSH~.
+            Il a pour but de remplacer les outils non sécurisés tels que \lstinline{rlogin}, \lstinline{rsh} et \lstinline{telnet}.
+            Il chiffre tout le trafic pour éliminer les écoutes clandestines, le détournement de connexion et d'autres attaques.
+            De plus, OpenSSH offre une large gamme de capacités de tunneling sécurisé, plusieurs méthodes d'authentification et des options de configuration sophistiquées.
 
-        \begin{columns}
-            \column{0.7\textwidth}
-            La suite OpenSSH se compose des outils suivants~:
-            \begin{itemize}
-                \item Les opérations à distance sont effectuées à l'aide de \lstinline{ssh}, \lstinline{scp} et \lstinline{sftp}.
-                \item Gestion des clés avec \lstinline{ssh-add}, \lstinline{ssh-keysign}, \lstinline{ssh-keyscan} et \lstinline{ssh-keygen}.
-                \item Le côté serveur comprend \lstinline{sshd}, \lstinline{sftp-server} et \lstinline{ssh-agent}.
-            \end{itemize}
-            \column{0.3\textwidth}
-            \includegraphics[width=3cm]{image/openssh}
-        \end{columns}
+            \begin{columns}
+                \column{0.7\textwidth}
+                La suite OpenSSH se compose des outils suivants~:
+                \begin{itemize}
+                    \item Les opérations à distance sont effectuées à l'aide de \lstinline{ssh}, \lstinline{scp} et \lstinline{sftp}.
+                    \item Gestion des clés avec \lstinline{ssh-add}, \lstinline{ssh-keysign}, \lstinline{ssh-keyscan} et \lstinline{ssh-keygen}.
+                    \item Le côté serveur comprend \lstinline{sshd}, \lstinline{sftp-server} et \lstinline{ssh-agent}.
+                \end{itemize}
+                \column{0.3\textwidth}
+                \includegraphics[width=3cm]{image/openssh}
+            \end{columns}
+        \end{small}
     \end{frame}
 
     \begin{frame}{OpenSSH}{Définition\cref{openssh-site}}
@@ -3462,18 +3470,20 @@ $ chris-digicomp.local IN    A      <mon IP>
     \end{frame}
 
     \begin{frame}{OpenSSH}{Les recommandations d'usage\footnote{\label{openssh-anssi}Recommandations pour un usage sécurisé d’(Open)SSH, \url{https://cyber.gouv.fr/sites/default/files/2014/01/NT_OpenSSH.pdf}}}
-        L'ANSSI, Agence nationale de la sécurité des systèmes d’information (française) fait des recommandations pour un usage sécurisé d'OpenSSH~.
-        \bigbreak
-        \begin{itemize}
-            \item L’usage de clés DSA n’est pas recommandé.
-            \item La taille de clé minimale doit être de 2048 bits pour RSA.
-            Avec la commande \lstinline{ssh-keygen -t rsa -b 2048 -f <fichier de clé RSA>}.
-            \item La taille de clé minimale doit être de 256 bits pour ECDSA.
-            Avec la commande \lstinline{ssh-keygen -t ecdsa -b 256 -f <fichier de clé ECDSA>}.
-            \item Lorsque les clients et les serveurs SSH supportent ECDSA, son usage doit être préféré à RSA.
-            \item La clé privée ne doit être connue que de l’entité qui cherche à prouver son identité à un tiers et éventuellement d’une autorité de confiance.
-            \item Les droits d’un utilisateur doivent suivre le principe de moindre privilège.
-        \end{itemize}
+        \begin{small}
+            L'ANSSI, Agence nationale de la sécurité des systèmes d’information (française) fait des recommandations pour un usage sécurisé d'OpenSSH~.
+            \bigbreak
+            \begin{itemize}
+                \item L’usage de clés DSA n’est pas recommandé.
+                \item La taille de clé minimale doit être de 2048 bits pour RSA.
+                Avec la commande \lstinline{ssh-keygen -t rsa -b 2048 -f <fichier de clé RSA>}.
+                \item La taille de clé minimale doit être de 256 bits pour ECDSA.
+                Avec la commande \lstinline{ssh-keygen -t ecdsa -b 256 -f <fichier de clé ECDSA>}.
+                \item Lorsque les clients et les serveurs SSH supportent ECDSA, son usage doit être préféré à RSA.
+                \item La clé privée ne doit être connue que de l’entité qui cherche à prouver son identité à un tiers et éventuellement d’une autorité de confiance.
+                \item Les droits d’un utilisateur doivent suivre le principe de moindre privilège.
+            \end{itemize}
+        \end{small}
     \end{frame}
 
     \begin{frame}[fragile]{OpenSSH}{Les recommandations d'usage}
@@ -3560,7 +3570,7 @@ $ rsync -a utilisateur@serveur:/chemin/vers/mon-dossier/ /chemin/vers/mon-dossie
             \item À l'image d'un backup périodique, utiliser crontab et \lstinline{rsync} pour synchroniser un fichier toutes les 5 minutes.
         \end{itemize}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -3578,7 +3588,7 @@ $ rsync -a utilisateur@serveur:/chemin/vers/mon-dossier/ /chemin/vers/mon-dossie
             \end{itemize}
         \end{footnotesize}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -3602,7 +3612,7 @@ $ rsync -a utilisateur@serveur:/chemin/vers/mon-dossier/ /chemin/vers/mon-dossie
                 \end{itemize}
                 \column{0.3\textwidth}
                 \begin{center}
-                    \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+                    \includegraphics[width=3cm]{image/desktop}
                 \end{center}
             \end{columns}
         \end{footnotesize}
@@ -3635,16 +3645,19 @@ $ rsync -a utilisateur@serveur:/chemin/vers/mon-dossier/ /chemin/vers/mon-dossie
     \end{frame}
 
     \subsection{Post-quantum cryptography}\label{subsec:pqc}
+
     \begin{frame}{Post-quantum cryptography}
-        \framesubtitle{Définition\footnote{Quantum-safe Cryptography Algorithms, \url{https://research.ibm.com/projects/quantum-safe-cryptography}}}
-        \transdissolve
-        Concerne la conception et la mise en œuvre de protocoles qui sont censés être sécurisés contre les capacités de calcul accrues des ordinateurs quantiques.
-        Les deux familles quantiques qui posent des problèmes à la cryptographie actuelle sont l'algorithme de Grover et l'algorithme de Shor.
-        \bigbreak
-        Grover affecte principalement la sécurité des primitives à clé symétrique (par exemple, AES, SHA-256, etc.) et la protection contre celui-ci nécessite généralement de simplement doubler la taille de la clé.
-        \bigbreak
-        Shor, quant à lui, est plus problématique pour la sécurité de certaines primitives à clé publique (par exemple, RSA, EC-DSA, etc.).
-        Pour résister à l'algorithme de Shor, les tailles de clé devraient augmenter de manière exponentielle, ce qui les rendrait pratiquement inutilisables.
+        \begin{small}
+            \framesubtitle{Définition\footnote{Quantum-safe Cryptography Algorithms, \url{https://research.ibm.com/projects/quantum-safe-cryptography}}}
+            \transdissolve
+            Concerne la conception et la mise en œuvre de protocoles qui sont censés être sécurisés contre les capacités de calcul accrues des ordinateurs quantiques.
+            Les deux familles quantiques qui posent des problèmes à la cryptographie actuelle sont l'algorithme de Grover et l'algorithme de Shor.
+            \bigbreak
+            Grover affecte principalement la sécurité des primitives à clé symétrique (par exemple, AES, SHA-256, etc.) et la protection contre celui-ci nécessite généralement de simplement doubler la taille de la clé.
+            \bigbreak
+            Shor, quant à lui, est plus problématique pour la sécurité de certaines primitives à clé publique (par exemple, RSA, EC-DSA, etc.).
+            Pour résister à l'algorithme de Shor, les tailles de clé devraient augmenter de manière exponentielle, ce qui les rendrait pratiquement inutilisables.
+        \end{small}
     \end{frame}
 
     \begin{frame}{Post-quantum cryptography}
@@ -3653,7 +3666,7 @@ $ rsync -a utilisateur@serveur:/chemin/vers/mon-dossier/ /chemin/vers/mon-dossie
         Sur le channel Youtube \textquote{IBM Technology}, un super channel~! \url{https://www.youtube.com/watch?v=ecvCfTPRBrI}
         \bigbreak
         \centering
-        \includegraphics[width=3cm]{image/digicomp-video}
+        \includegraphics[width=3cm]{image/video}
     \end{frame}
 
     \begin{frame}{Post-quantum cryptography}
@@ -4293,7 +4306,7 @@ $ time <commande>
             \item Si oui, laquelle et pourquoi~?
         \end{itemize}
         \begin{center}
-            \includegraphics[width=3cm]{image/guy-in-front-of-desktop}
+            \includegraphics[width=3cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -4377,7 +4390,7 @@ typeset val=$((valeur1 + valeur2))
         On peut la définir en lançant le script avec \lstinline{bash -x script.sh}.
         Ou dans le script avec \lstinline{set -x} et \lstinline{set +x} pour désactiver.
         \bigbreak
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
 $ sh -x sqlite-hr.sh
 + readonly DB_NAME=hr.db
 + rm -f hr.db
