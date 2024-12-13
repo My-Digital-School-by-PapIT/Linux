@@ -2005,12 +2005,350 @@ $ ls /media/nfs/
  blurryfaces                                nobleNote
         \end{lstlisting}
     \end{frame}
+    \subsection{Editer des données sans \lstinline{vi}}\label{subsec:edit-whithout-vi}
 
+
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Les différents éditeurs}
+        Une distribution Ubuntu type cloud/server de base a comme éditeur~:
+        \begin{itemize}
+            \item \lstinline{nano}: Un éditeur de texte simple sous licence GNU~.
+            \item \lstinline{vi}: Un éditeur de texte plus complexe et plus puissant.
+            Mais il est nécessaire de mémoriser un grand nombre de commandes pour les diverses opérations.
+            \item \lstinline{ed}: Un éditeur minimaliste.
+            Il nécessite aussi de connaître plusieurs commandes.
+            Mais est utile pour éditer des configurations sur des distributions minimalistes ou en mode recovery.
+        \end{itemize}
+    \end{frame}
+
+    \subsubsection{nano}\label{subsubsec:nano}
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Présentation de \lstinline{nano}\footnote{\label{nano}GNU nano, \url{https://www.nano-editor.org/}}}
+        \begin{itemize}
+            \item \lstinline{nano} est un éditeur de texte simple et facile à utiliser.
+            Toutes les commandes sont à l'écran.
+            \item Il est souvent installé par défaut sur les systèmes Linux.
+            \item Il est idéal pour les débutants ou pour les utilisateurs qui n'ont pas besoin de fonctionnalités avancées.
+            \item Coloration syntaxique par défaut, supportant de nombreux langages.
+            On peut voir la liste dans le fichier \lstinline{/usr/share/nano/}.
+            \item Pour ouvrir un fichier, qu'il existe ou non, la commande est \lstinline{nano <chemin du fichier>}.
+        \end{itemize}
+        Exercice \execcounterdispinc~: Quels langages sont supportés par votre \lstinline{nano}~?
+
+        Exercice \execcounterdispinc~: Modifier avec \lstinline{nano} la description dans la configuration d'un service du chemin \lstinline{/etc/systemd/system}.
+    \end{frame}
+
+    \begin{frame}{Editer des données sans \lstinline{vi}Présentation de \lstinline{nano}}
+        \centering
+        \includegraphics[width=9cm]{image/nano-screen.drawio} \\ Interface de \lstinline{nano}, les commandes sont bas et il y en a 16 seulement! \\
+    \end{frame}
+
+    \subsubsection{ed}\label{subsubsec:ed}
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Présentation de \lstinline{ed}\footnote{\label{redhated}How to get started with the ed text editor, \url{https://www.redhat.com/sysadmin/introduction-ed-editor}}}
+        \begin{itemize}
+            \item \lstinline{ed} est l'un des premiers éditeurs de texte Unix.
+            \item C'est un éditeur en ligne de commande, sans interface graphique.
+            \item Il fonctionne de manière interactive ou par script.
+            \item L'éditeur utilise une \textquote{mémoire tampon} pour modifier les fichiers.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Lancement de \lstinline{ed}\cref{redhated}}
+        \begin{itemize}
+            \item Taper simplement \lstinline{ed} pour lancer l'éditeur.
+            \item L'éditeur ne fournit pas de retour immédiat ; il attend vos commandes.
+            \item Utiliser la commande \lstinline{p} pour afficher un prompt~: \lstinline{?}.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Editer des données sans \lstinline{vi}}{Ajout et modification de texte avec \lstinline{ed}\cref{redhated}}
+        \begin{itemize}
+            \item Utiliser la commande \lstinline{a} pour ajouter du texte à la mémoire tampon.
+            \item Terminer l'édition avec un point seul sur une ligne \lstinline{.} pour retourner au mode commande.
+            \item Exemple~:
+            \begin{lstlisting}
+a
+[myconfig]
+widget=True
+.
+            \end{lstlisting}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Editer des données sans \lstinline{vi}}{Sauvegarder et lire des fichiers avec \lstinline{ed}\cref{redhated}}
+        \begin{itemize}
+            \item Sauvegarder la mémoire tampon dans un fichier avec la commande \lstinline{w}~:
+            \begin{lstlisting}
+w fichier.txt
+            \end{lstlisting}
+            \item Charger un fichier existant dans la mémoire tampon avec la commande \lstinline{r}~:
+            \begin{lstlisting}
+r /etc/myconfig.txt
+            \end{lstlisting}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Editer des données sans \lstinline{vi}}{Visualiser et éditer la mémoire tampon de \lstinline{ed}\cref{redhated}}
+        \begin{itemize}
+            \item Afficher toutes les lignes avec la commande \lstinline{,p}.
+            \item Modifier une ligne spécifique en utilisant le numéro de ligne et la commande \lstinline{s}~:
+            \begin{lstlisting}
+2
+s/True/False/
+            \end{lstlisting}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Vider et quitter \lstinline{ed}\cref{redhated}}
+        \begin{itemize}
+            \item Utiliser la commande \lstinline{c} pour vider la mémoire tampon.
+            \item Quittez \lstinline{ed} avec la commande \lstinline{q} ou en appuyant sur Ctrl+D~.
+            \item Attention~: Si vous quittez sans sauvegarder, vos modifications seront perdues.
+        \end{itemize}
+        \begin{dangercolorbox}
+            Avis du formateur~:
+            \begin{itemize}
+                \item Pas de coloration syntaxique donc peut adapté aux fichiers complexes.
+                \item Compliqué à cause du buffer et des commandes associées.
+                \item UX très peu conviviale.
+            \end{itemize}
+        \end{dangercolorbox}
+    \end{frame}
+
+    \begin{frame}{Editer des données sans \lstinline{vi}}{Exercice \execcounterdispinc}
+        \begin{itemize}
+            \item Écrire un fichier avec 3 lignes de texte.
+            \item Modifier la deuxième ligne.
+            \item Sauvegarder le fichier.
+            \item Quitter l'éditeur.
+            \item Relire le fichier.
+            \item mMdifier la deuxième ligne.
+            \item Supprimer le fichier.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Editer des données avec \lstinline{vi}}\label{subsec:edit-whith-vi}
+
+    \subsubsection{vi}\label{subsubsec:vi}
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Démarrer VI\footnote{\label{marquette-vi}Basic VI Editor Commands, \url{https://www.marquette.edu/mathematical-and-statistical-sciences/basic-vi-editor-commands.php}}}
+        \begin{itemize}
+            \item Commande~: \lstinline{vi <nom du fichier existant ou non>}
+            \item Ouvre un fichier pour l'édition à partir de la première ligne.
+            \item Autres options~:
+            \begin{itemize}
+                \item \lstinline{vi +n filename}~: Ouvre à la ligne n.
+                \item \lstinline{vi -r filename}~: Récupère un fichier après un crash.
+                \item \lstinline{vi +/pattern filename}~: Ouvre à la première occurrence du motif.
+            \end{itemize}
+        \end{itemize}
+        \begin{dangercolorbox}
+            \lstinline{vi} est un alias vers \lstinline{vim} qui est un éditeur compatible et très similaire.
+        \end{dangercolorbox}
+    \end{frame}
+
+    \begin{frame}{Éditer des données avec \lstinline{vi}}{Modes d'Édition~: Commande vs Insertion\cref{marquette-vi}}
+        \begin{itemize}
+            \item \textbf{Mode Commande}~: Déplacer le curseur, supprimer du texte, copier-coller, sauvegarder le fichier.
+            \item \textbf{Mode Insertion}~: Insérer du texte dans le fichier.
+            \item Utiliser la touche \lstinline{ESC} pour passer du mode Insertion au mode Commande.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Insérer du Texte\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{i}~: Insérer avant le curseur.
+            \item \lstinline{a}~: Insérer après le curseur.
+            \item \lstinline{A}~: Insérer à la fin de la ligne.
+            \item \lstinline{o}~: Ouvrir une nouvelle ligne sous la ligne courante.
+            \item \lstinline{O}~: Ouvrir une nouvelle ligne au-dessus de la ligne courante.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Déplacer le Curseur\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{h}~: Un espace à gauche.
+            \item \lstinline{l}~: Un espace à droite.
+            \item \lstinline{j}~: Une ligne vers le bas.
+            \item \lstinline{k}~: Une ligne vers le haut.
+            \item \lstinline{w}~: Mot suivant.
+            \item \lstinline{$}~: Fin de la ligne.
+            \item \lstinline{0}~: Début de la ligne.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Supprimer du Texte\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{dd}~: Supprimer la ligne courante.
+            \item \lstinline{dw}~: Supprimer jusqu'à la fin du mot.
+            \item \lstinline{d3w}~: Supprimer jusqu'à la fin du troisième mot.
+            \item \lstinline{x}~: Supprimer le caractère courant.
+            \item \lstinline{3dd}~: Supprimer 3 lignes.
+            \item \lstinline{u}~: Annuler la suppression.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Copier et Coller du Texte\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{yy}~: Copier la ligne courante.
+            \item \lstinline{3yy}~: Copier 3 lignes.
+            \item \lstinline{p}~: Coller sous la ligne courante.
+            \item \lstinline{P}~: Coller au-dessus de la ligne courante.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Rechercher et Remplacer\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{/<pattern>}~: Recherche le pattern dans le fichier.
+            \item \lstinline{n}~: Aller à la prochaine occurrence du motif.
+            \item \lstinline{:\%s/ancien/nouveau/g}~: Remplacer toutes les occurrences de \lstinline{ancien} par \lstinline{nouveau}.
+        \end{itemize}
+    \end{frame}
+
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Terminer une Session d'Édition\cref{marquette-vi}}
+        \begin{itemize}
+            \item \lstinline{:w}~: Sauvegarder le fichier.
+            \item \lstinline{:q}~: Quitter l'éditeur.
+            \item \lstinline{:wq} ou \lstinline{ZZ}~: Sauvegarder et quitter.
+            \item \lstinline{:q!}~: Quitter sans sauvegarder.
+        \end{itemize}
+
+        \begin{dangercolorbox}
+            Avis du formateur~:
+            \begin{itemize}
+                \item Pas de coloration syntaxique de base.
+                \item Charge cognitive trop importante à cause des nombreuses commandes.
+                Donc pas adapté au développement de programmes ou script même les plus simples.
+                \item UX très peu conviviale.
+                \item Pas de débuggeur par défaut.
+            \end{itemize}
+        \end{dangercolorbox}
+    \end{frame}
+
+    \begin{frame}{Editer des données avec \lstinline{vi}}{Exercice \execcounterdispinc}
+        \begin{itemize}
+            \item Modifier la description d'un service de \lstinline{/etc/systemd/system}.
+            \item Ajouter une ligne de commentaire.
+            \item Sauvegarder et quitter le fichier.
+            \item Supprimer la ligne de commentaire ajoutée.
+            \item Sauvegarder et quitter le fichier.
+        \end{itemize}
+    \end{frame}
+
+    \section{Files et Directories}\label{sec:files-directories}
+
+    \begin{frame}[fragile]{Files et Directories}{Quel type de fichier~?}
+        La liste des fichiers est trop longue pour qu'un registre soit tenu.
+        Chacun peut créer son extension.
+        Mais la commande \lstinline{file <chemin du fichier ou dossier>}, en examinant le contenu, nous indique le type de fichier/dossier.
+        \begin{lstlisting}[language=bash]
+$ file fibo.sh
+fibo.sh: POSIX shell script, ASCII text executable
+$ file out/linux.pdf
+out/linux.pdf: PDF document, version 1.5
+$ file venv/bin/python3
+venv/bin/python3: symbolic link to python
+$ file venv/bin/python
+venv/bin/python: symbolic link to /usr/bin/python3.12
+$ file /usr/bin/python3.12
+/usr/bin/python3.12: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ccd329aaf9256b96135a9e3f97cbf4c3829377e1, for GNU/Linux 3.2.0, stripped
+$ file fibo_cached.py
+fibo_cached.py: Python script, ASCII text executable
+        \end{lstlisting}
+    \end{frame}
+
+    \begin{frame}[fragile]{Files et Directories}{Quel type de doonées}
+        On peut stocker les données sous deux familles de fichiers~:
+        \begin{itemize}
+            \item Les fichiers textes comme par exemple~:
+            \begin{itemize}
+                \item Les CSV~.
+                \item Les fichiers texte ou Markdown.
+                \item les fichiers du web comme XML, HTML, JSON~.
+                \item Certains fichiers de log.
+            \end{itemize}
+            \item Les fichiers binaires~:
+            \begin{itemize}
+                \item Les fichiers de données des BBD SQL, noSQL~.
+                \item Les tableurs de type Excel.
+                \item Certains fichiers de log.
+                \item Le dump du traffic d'une interface réseau.
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Commandes de traitement de données}{Arborescence Linux\footnote{\label{arborescence-linux}Arborescence des répertoires d’Ubuntu, \url{https://doc.ubuntu-fr.org/arborescence}}}
+        \begin{tiny}
+            \begin{table}[h!]
+                \centering
+                \begin{tabular}{|l|p{3cm}|p{6cm}|}
+                    \hline
+                    \textbf{Répertoire} & \textbf{Signification}               & \textbf{Contenu}                                                                                                               \\
+                    \hline
+                    \lstinline{/}       & Racine du système                    & Hiérarchie primaire                                                                                                            \\
+                    \hline
+                    \lstinline{/bin}    & binaires, utilitaires binaires       & Exécutables des commandes essentielles disponibles pour tous les utilisateurs (ex: cd, cat, ls…)                               \\
+                    \hline
+                    \lstinline{/boot}   & initialisation                       & Fichiers statiques du chargeur d’amorçage (noyaux, images ramdisk, fichiers de configuration du chargeur d'amorçage…)          \\
+                    \hline
+                    \lstinline{/dev}    & périphérique                         & Fichiers spéciaux des périphériques                                                                                            \\
+                    \hline
+                    \lstinline{/etc}    & configuration éditable en mode texte & Fichiers de configuration au format textuel de plusieurs programmes et services du système                                     \\
+                    \hline
+                    \lstinline{/home}   & maison                               & Répertoires personnels des utilisateurs                                                                                        \\
+                    \hline
+                    \lstinline{/lib}    & bibliothèques                        & Bibliothèques partagées essentielles et modules du noyau                                                                       \\
+                    \hline
+                    \lstinline{/media}  &                                      & Contient les points de montages pour les médias amovibles                                                                      \\
+                    \hline
+                    \lstinline{/mnt}    & montage                              & Point de montage pour monter temporairement un système de fichiers                                                             \\
+                    \hline
+                    \lstinline{/opt}    & optionnel                            & Emplacement pour des applications installées hors gestionnaire de paquets (logiciels optionnels)                               \\
+                    \hline
+                    \lstinline{/proc}   & processus                            & Répertoire virtuel pour les informations système (états du noyau et des processus système)                                     \\
+                    \hline
+                    \lstinline{/root}   & racine                               & Répertoire personnel du super-utilisateur                                                                                      \\
+                    \hline
+                    \lstinline{/run}    & exécution système                    & Informations relatives au système depuis son dernier démarrage (ex~: utilisateurs actifs, services en cours d'exécution, etc.) \\
+                    \hline
+                    \lstinline{/sbin}   & binaires système                     & Exécutables système essentiels                                                                                                 \\
+                    \hline
+                \end{tabular}
+            \end{table}
+        \end{tiny}
+    \end{frame}
+
+
+    \begin{frame}{Commandes de traitement de données}{Arborescence Linux\cref{arborescence-linux}}
+        \begin{tiny}
+            \begin{table}[h!]
+                \centering
+                \begin{tabular}{|l|p{3cm}|p{6cm}|}
+                    \hline
+                    \textbf{Répertoire}    & \textbf{Signification}  & \textbf{Contenu}                                                                                                                                                                     \\
+                    \hline
+                    \lstinline{/srv}       & services                & Données pour les services du système                                                                                                                                                 \\
+                    \hline
+                    \lstinline{/tmp}       & temporaire              & Fichiers temporaires des applications                                                                                                                                                \\
+                    \hline
+                    \lstinline{/usr}       & ressources système Unix & Hiérarchie secondaire, pour des données en lecture seule par les utilisateurs. Ce répertoire contient la vaste majorité des applications usuelles des utilisateurs et leurs fichiers \\
+                    \hline
+                    \lstinline{/usr/bin}   &                         & Exécutables des programmes additionnels disponibles pour tous les utilisateurs (ex~: le gestionnaire de fichiers, le lecteur de musique, le navigateur Web…)                         \\
+                    \hline
+                    \lstinline{/usr/lib}   &                         & Bibliothèques partagées par les applications additionnelles de /usr/bin et /usr/sbin                                                                                                 \\
+                    \hline
+                    \lstinline{/usr/local} &                         & Hiérarchie tertiaire. Emplacement où les utilisateurs doivent installer les applications qu'ils compilent.                                                                           \\
+                    \hline
+                    \lstinline{/usr/share} &                         & Fichiers non reliés à l'architecture partagés par les applications de /usr/bin et /usr/sbin (ex~: les icônes, les thèmes, la documentation…)                                         \\
+                    \hline
+                    \lstinline{/var}       & variable                & Données variables et diverses                                                                                                                                                        \\
+                    \hline
+                \end{tabular}
+            \end{table}
+        \end{tiny}
+    \end{frame}
 
     \section{Processus}\label{sec:processus}
 
     \subsection{Gestion des processus}\label{subsec:process-management}
-
     \begin{frame}{Gestion des processus}{Définition\footnote{\label{process}Les processus sous Linux, \url{https://www.cyberciti.biz/faq/how-to-check-running-process-in-ubuntu-linux-using-command-line/}}}
         Un processus est un programme en cours d'exécution.
         Il est identifié par un PID, le \textquote{Process IDentifier}.
