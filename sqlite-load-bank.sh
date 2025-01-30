@@ -19,7 +19,7 @@ EOF
 # Create table due for due amount to other banks
 sqlite3 $DB_NAME <<EOF
 CREATE TABLE due (
-  customer_id INTEGER PRIMARY KEY,
+  bank_id INTEGER PRIMARY KEY,
   due INTEGER NOT NULL
 );
 EOF
