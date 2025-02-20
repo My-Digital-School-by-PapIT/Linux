@@ -770,6 +770,7 @@ c148c36111463e962f490742af787c1f8e49776f09d89e19f71c6cdcf220240d  employee.csv
         \begin{itemize}
             \item \lstinline{||}~: Exécute la commande suivante si la précédente a échoué.
             \item \lstinline{\&\&}~: Exécute la commande suivante si la précédente a réussi.
+            \item \lstinline{!}~: Non logique, inverse le résultat d'une commande.
         \end{itemize}
         Ils peuvent définir le comportement d'un script et être utilisés dans des conditions.
         \bigbreak
@@ -1231,11 +1232,6 @@ chrichri~: chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse
     \end{frame}
 
     \begin{frame}[fragile]{Utilisateurs, groupes et droits d'accès}{Les groupes}
-        \lstinline{groups} permet de lister les groupes auxquels appartient un utilisateur, à défaut d'utilisateur, ceux de celui qui lance la commande~:
-        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
-$ groups chrichri
-chrichri~: chrichri adm dialout cdrom sudo audio dip video plugdev lpadmin pulse lxd sambashare nordvpn docker libvirt
-        \end{lstlisting}
         Pour qu'une ressource, fichier, dossier, appartienne à un groupe, il faut que le groupe soit propriétaire de la ressource.
         Pour cela, la commande \lstinline{chown} (CHange OWNer) permet de changer le propriétaire d'une ressource.
 % Shell listing
@@ -2004,6 +2000,7 @@ $ ls /media/nfs/
  blurryfaces                                nobleNote
         \end{lstlisting}
     \end{frame}
+
     \subsection{Editer des données sans \lstinline{vi}}\label{subsec:edit-whithout-vi}
 
 
@@ -2232,6 +2229,7 @@ s/True/False/
         \end{itemize}
     \end{frame}
 
+
     \section{Files et Directories}\label{sec:files-directories}
 
     \begin{frame}[fragile]{Files et Directories}{Quel type de fichier~?}
@@ -2345,6 +2343,7 @@ fibo_cached.py: Python script, ASCII text executable
             \end{table}
         \end{tiny}
     \end{frame}
+
 
     \section{Processus}\label{sec:processus}
 
@@ -2483,7 +2482,7 @@ root           2       0  0 sept.06 ?      00:00:00 [kthreadd]
     \begin{frame}[fragile]{Gestion des processus}{La commande \lstinline{kill}}
         La commande \lstinline{top} permet de terminer un processus dans l'interface avec \textbf{k}.
         En fonction de son PID, qu'on aurait auparavant trouvé dans cette même interface.
-        ou avec la commande \lstinline{ps}, on peut le tuer avec la commande \lstinline{kill}.
+        Ou avec la commande \lstinline{ps}, on peut le tuer avec la commande \lstinline{kill}.
         \bigbreak
         Mais il existe une commande spécifique, c'est \lstinline{kill}, elle envoie un signal au processus ici SIGKILL avec l'option \lstinline{-9}.
         Elle permet de terminer un processus dont on aurait trouvé le PID avec \lstinline{ps} ou \lstinline{top}.
@@ -2564,7 +2563,7 @@ $ pkill -9 <nom>
             Personnaliser \lstinline{top} pour que l'interface affiche les processus non pas en pourcentage totale de CPU consommé (par défaut) mais en pourcentage par cœur.
         \end{small}
         \begin{center}
-            \includegraphics[width=3cm]{image/desktop}
+            \includegraphics[width=2cm]{image/desktop}
         \end{center}
     \end{frame}
 
@@ -2666,13 +2665,14 @@ $ sudo renice -19 -p 906674
     \end{frame}
 
     \begin{frame}[fragile]{Les services}{Exemples}
-        \lstinline{systemd} est donc l'outil de choix pour lancer en production des applications, des progiciels, \textit{etc}.
+        \begin{small}
+            \lstinline{systemd} est donc l'outil de choix pour lancer en production des applications, des progiciels, \textit{etc}.
 
-        Encore mieux, on peut configurer des services pour qu'ils lancent des VM avec Qemu et les applications tourneraient dans les VM~.
-        On profite des avantages de la virtualisation pour isoler les applications et les sécuriser.
-        \bigbreak
-        Que fait cette configuration~?
-        \begin{lstlisting}
+            Encore mieux, on peut configurer des services pour qu'ils lancent des VM avec Qemu et les applications tourneraient dans les VM~.
+            On profite des avantages de la virtualisation pour isoler les applications et les sécuriser.
+            \bigbreak
+            Que fait cette configuration~?
+            \begin{lstlisting}
 [Unit]
 Description=IN DATA development application
 [Service]
@@ -2682,10 +2682,11 @@ WorkingDirectory=/home/debian/dev/IN FRANCE
 ExecStart="/home/debian/dev/IN FRANCE/python3-dev/bin/python3" -m gunicorn -w 1 -b unix:/tmp/in-france-dev-indata-gunicorn.sock application_indata
 [Install]
 WantedBy=multi-user.target
-        \end{lstlisting}
-        \begin{dangercolorbox}
-            Le chemin de l'exécutable dans \lstinline{ExecStart} doit être absolu!
-        \end{dangercolorbox}
+            \end{lstlisting}
+            \begin{dangercolorbox}
+                Le chemin de l'exécutable dans \lstinline{ExecStart} doit être absolu!
+            \end{dangercolorbox}
+        \end{small}
     \end{frame}
 
     \begin{frame}{Les services}{Les commandes de base}
@@ -2746,7 +2747,7 @@ $ qemu-system-x86_64 -m 2G -smp 1 -nic user,hostfwd=tcp::5022-:22,hostfwd=tcp::5
         \end{itemize}
     \end{frame}
 
-    \begin{frame}[fragile]{Exercice pratique \execcounterdispinc{}}{Une des solutions}
+    \begin{frame}[fragile]{Une des solutions}
         Le service de la machine hôte~:
         \begin{lstlisting}
 [Unit]
@@ -2771,7 +2772,7 @@ WantedBy=multi-user.target
         \end{dangercolorbox}
     \end{frame}
 
-    \begin{frame}[fragile]{Exercice pratique \execcounterdispinc{}}{Une des solutions}
+    \begin{frame}[fragile]{Une des solutions}
         Le service dans la VM~:
         \begin{lstlisting}
 [Unit]
