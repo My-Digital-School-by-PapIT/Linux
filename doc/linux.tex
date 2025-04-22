@@ -997,26 +997,62 @@ $ sed 1d employee.csv | sort -k 4,2 --field-separator=';' | head -n 4
     \begin{frame}[fragile]{Commandes de traitement de données}{\lstinline{join} pour joindre 2 fichiers sur une clé}
         Jointure des fichiers CSV \lstinline{employee.csv} et \lstinline{dept.csv} sur la colonne \lstinline{dept_id} qui est commune aux 2~:
         \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
-$ join -1 1 -2 1 -t ';' -a 2 <(sed 1d employee.csv | sort -k 1 --field-separator=';') <(sed 1d dept.csv | sort -k 1 --field-separator=';')
-0;"John";30;1000;0;"HR"
-1;"Jane";25;1500;0;"Engineering"
-2;"Doe";35;2000;1;"Finance"
-$ join -1 1 -2 1 -t ';' -a 1 <(sed 1d employee.csv | sort -k 1 --field-separator=';') <(sed 1d dept.csv | sort -k 1 --field-separator=';')
-0;"John";30;1000;0;"HR"
-1;"Jane";25;1500;0;"Engineering"
-2;"Doe";35;2000;1;"Finance"
-3;"Steeve";40;2000;0
-4;"Smith";40;2500;1
-5;"Brown";45;3000;2
+$ join -1 5 -2 1 -t ';' <(sed 1d employee.csv | sort -k 5 --field-separator=';') <(sed 1d dept.csv | sort -k 1 --field-separator=';')
+0;0;"John";30;1000;"HR"
+0;1;"Jane";25;1500;"HR"
+0;3;"Steeve";40;2000;"HR"
+1;2;"Doe";35;2000;"Engineering"
+1;4;"Smith";40;2500;"Engineering"
+2;5;"Brown";45;3000;"Finance"
         \end{lstlisting}
-        \begin{dangercolorbox}
-            Les 2 doivent avoir exactement le même nombre de ligne~!
-            Les 3 dernières lignes ont une correspondance dans le fichier \lstinline{dept.csv} mais aucune association n'est faite, car le fichier \lstinline{dept.csv} n'a que 3 lignes.
-
-            Les clés d'associations doivent être triées, il y a donc toujours une étape avec \lstinline{sort} auparavant.
-        \end{dangercolorbox}
+        Il y a en sortie une ligne pour chaque association entre les deux fichiers.
+        \bigbreak
+        La clé qui a permis l'association n'y est plus qu'une seule fois dans le fichier de sortie.
     \end{frame}
 
+    \begin{frame}[fragile]{Commandes de traitement de données}{\lstinline{join} pour joindre 2 fichiers sur une clé}
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
+$ join -1 5 -2 1 -t ';' -a 1 <(sed 1d employee.csv | sort -k 5 --field-separator=';') <(sed 1d dept.csv | sort -k 1 --field-separator=';')
+0;0;"John";30;1000;"HR"
+0;1;"Jane";25;1500;"HR"
+0;3;"Steeve";40;2000;"HR"
+1;2;"Doe";35;2000;"Engineering"
+1;4;"Smith";40;2500;"Engineering"
+2;5;"Brown";45;3000;"Finance"
+5;6;"Dave";50;3000
+        \end{lstlisting}
+        L'argument optionnel \lstinline{-a} si indique doit être présent même sans association possible.
+        Sa valeur est 1 ou 2, correspondant aux fichiers passés en arguments.
+        \begin{dangercolorbox}
+            Les fichiers doivent être triés sur les clés d'associations, il y a donc toujours une étape avec \lstinline{sort} auparavant.
+            \bigbreak
+            Le flag \lstinline{--check-order} permet de fichier que les fichiers sont correctement triés.
+        \end{dangercolorbox}
+        \bigbreak
+        Pourquoi le tri est-il nécessaire~?
+    \end{frame}
+
+    \begin{frame}[fragile]{Commandes de traitement de données}{\lstinline{join} pour joindre 2 fichiers sur une clé}
+        Sans tri, toutes les lignes ne seront pas associées.
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
+$ join -1 5 -2 1 -t ';' <(sed 1d employee.csv) <(sed 1d dept.csv)
+0;0;"John";30;1000;"HR"
+0;1;"Jane";25;1500;"HR"
+1;2;"Doe";35;2000;"Engineering"
+2;5;"Brown";45;3000;"Finance"
+        \end{lstlisting}
+        \lstinline{--check-order} génère un message d'erreur dans la standard error~:
+        \begin{lstlisting}[language=bash,basicstyle=\tiny\ttfamily]
+$ join --check-order -1 5 -2 1 -t ';' <(sed 1d employee.csv) <(sed 1d dept.csv)
+0;0;"John";30;1000;"HR"
+0;1;"Jane";25;1500;"HR"
+join: /dev/fd/63:4 : n'est pas trié : 3;"Steeve";40;2000;0
+$ join --check-order -1 5 -2 1 -t ';' <(sed 1d employee.csv) <(sed 1d dept.csv) 1> /dev/null
+join: /dev/fd/63:4 : n'est pas trié : 3;"Steeve";40;2000;0
+        \end{lstlisting}
+    \end{frame}
+
+    \subsubsection{awk}\label{subsubsec:awk}
     \begin{frame}{Commandes de traitement de données}{\lstinline{awk}}
         L'histoire et le bien fondé de \lstinline{awk} (12 premières minutes).
         \bigbreak
