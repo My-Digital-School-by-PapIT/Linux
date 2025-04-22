@@ -1197,10 +1197,8 @@ join: /dev/fd/63:4 : n'est pas trié : 3;"Steeve";40;2000;0
         \begin{lstlisting}[language=python]
 from sys import getsizeof
 from struct import pack
-print("lentgh of the string:", getsizeof("65535"))
-print("lentgh of the struct:", getsizeof(pack(">H", 0xffff)))
-lentgh of the string: 46
-lentgh of the struct: 35
+print("length of the string:", getsizeof("65535")) # length of the string: 46
+print("length of the struct:", getsizeof(pack(">H", 0xffff))) # length of the struct: 35
         \end{lstlisting}
         La valeur d'un octet est comprise entre 0 et 255, mais pour obtenir du texte, on passe par une table de correspondance, un encodage, qui donnera un seul caractère.
         La valeur numérique la plus élevée pour ce même octet en texte est donc 9.
@@ -2152,7 +2150,7 @@ s/True/False/
             \item Sauvegarder le fichier.
             \item Quitter l'éditeur.
             \item Relire le fichier.
-            \item mMdifier la deuxième ligne.
+            \item Modifier la deuxième ligne.
             \item Supprimer le fichier.
         \end{itemize}
     \end{frame}
@@ -3580,7 +3578,7 @@ $ ssh chrichri@192.168.122.1 -p 5022 -v -i /home/chrichri/vms/virt-ubuntu
                     \hline
                     \lstinline{iptables-restore}                                                   & Charge les règles dumpées avec \lstinline{iptables-save}.            \\
                     \hline
-                    \lstinline{service iptables-persistent save}                                   & Rend les règles actuelles persistentes après redémarrage.            \\
+                    \lstinline{service iptables-persistent save}                                   & Rend les règles actuelles persistantes après redémarrage.            \\
                     \hline
                 \end{tabular}
             \end{table}
